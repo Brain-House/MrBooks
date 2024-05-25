@@ -1,228 +1,153 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Tempo de geração: 22/05/2024 às 03:20
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+/*
+SQLyog Enterprise - MySQL GUI v8.12 
+MySQL - 5.5.5-10.4.28-MariaDB : Database - books
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
---
--- Banco de dados: `books`
---
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`books` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
--- --------------------------------------------------------
+USE `books`;
 
---
--- Estrutura para tabela `autores`
---
+/*Table structure for table `autores` */
+
+DROP TABLE IF EXISTS `autores`;
 
 CREATE TABLE `autores` (
-  `id_autor` int(10) NOT NULL,
-  `nome` int(11) NOT NULL
+  `autor_id` int(11) NOT NULL AUTO_INCREMENT,
+  `autor_nome` varchar(100) NOT NULL,
+  PRIMARY KEY (`autor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `autores` */
 
---
--- Estrutura para tabela `cliente`
---
+/*Table structure for table `compras` */
 
-CREATE TABLE `cliente` (
-  `cli_id` int(11) NOT NULL,
-  `cli_data_inc` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `cli_status` enum('0','1') NOT NULL DEFAULT '1',
-  `cli_documento` varchar(15) NOT NULL,
-  `cli_nome` varchar(100) NOT NULL,
-  `cli_aniversario` date NOT NULL,
-  `tel_id` int(11) NOT NULL,
-  `end_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `compras`
---
+DROP TABLE IF EXISTS `compras`;
 
 CREATE TABLE `compras` (
-  `id_compra` int(11) NOT NULL,
-  `data_compra` date NOT NULL,
-  `id_livro` int(11) NOT NULL
+  `com_id` int(11) NOT NULL AUTO_INCREMENT,
+  `com_data` date NOT NULL,
+  `com_status` varchar(10) NOT NULL,
+  `usu_id` int(11) NOT NULL,
+  `liv_id` int(11) NOT NULL,
+  PRIMARY KEY (`com_id`),
+  KEY `fkCompraUsuario` (`usu_id`),
+  KEY `fkCompraLivro` (`liv_id`),
+  CONSTRAINT `fkCompraLivro` FOREIGN KEY (`liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkCompraUsuario` FOREIGN KEY (`usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `compras` */
 
---
--- Estrutura para tabela `editoras`
---
+/*Table structure for table `editoras` */
+
+DROP TABLE IF EXISTS `editoras`;
 
 CREATE TABLE `editoras` (
-  `id_editora` int(11) NOT NULL,
-  `nome` int(11) NOT NULL
+  `edi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `edi_nome` varchar(100) NOT NULL,
+  PRIMARY KEY (`edi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `editoras` */
 
---
--- Estrutura para tabela `endereco`
---
+/*Table structure for table `enderecos` */
 
-CREATE TABLE `endereco` (
-  `end_id` int(11) NOT NULL,
-  `end_cli_id` int(11) NOT NULL,
-  `end_cep` varchar(10) NOT NULL,
-  `end_cidade` varchar(70) NOT NULL,
-  `end_uf` char(2) NOT NULL,
-  `end_logradouro` varchar(100) NOT NULL,
+DROP TABLE IF EXISTS `enderecos`;
+
+CREATE TABLE `enderecos` (
+  `end_id` int(11) NOT NULL AUTO_INCREMENT,
   `end_numero` varchar(10) NOT NULL,
-  `end_bairro` varchar(50) NOT NULL,
-  `end_complemento` varchar(50) NOT NULL
+  `end_bairro` varchar(100) NOT NULL,
+  `end_uf` varchar(20) NOT NULL,
+  `end_cidade` varchar(100) NOT NULL,
+  `end_cep` varchar(20) NOT NULL,
+  `end_rua` varchar(150) NOT NULL,
+  `end_logradouro` varchar(100) NOT NULL,
+  `usu_id` int(11) NOT NULL,
+  PRIMARY KEY (`end_id`),
+  KEY `fkEnderecoUsuario` (`usu_id`),
+  CONSTRAINT `fkEnderecoUsuario` FOREIGN KEY (`usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `enderecos` */
 
---
--- Estrutura para tabela `livros`
---
+/*Table structure for table `livros` */
+
+DROP TABLE IF EXISTS `livros`;
 
 CREATE TABLE `livros` (
-  `id_livros` int(10) NOT NULL,
-  `liv_titulo` int(10) NOT NULL,
-  `liv_autor` varchar(100) NOT NULL,
-  `liv_editora` varchar(45) NOT NULL,
-  `liv_genero` text NOT NULL,
-  `liv_resumo` text NOT NULL,
-  `liv_paginas` int(11) NOT NULL,
-  `liv_formato` varchar(40) NOT NULL,
-  `idioma` text NOT NULL,
-  `ISBN` int(11) NOT NULL,
-  `id_autor` int(11) NOT NULL,
-  `id_editora` int(11) NOT NULL
+  `liv_id` int(11) NOT NULL AUTO_INCREMENT,
+  `liv_titulo` varchar(100) NOT NULL,
+  `liv_isbn` varchar(100) NOT NULL,
+  `liv_idioma` varchar(20) NOT NULL,
+  `liv_formato` varchar(100) NOT NULL,
+  `liv_genero` varchar(100) NOT NULL,
+  `liv_resumo` varchar(500) NOT NULL,
+  `liv_numpagi` int(11) NOT NULL,
+  `edi_id` int(11) NOT NULL,
+  PRIMARY KEY (`liv_id`),
+  KEY `fkLivroEditora` (`edi_id`),
+  CONSTRAINT `fkLivroEditora` FOREIGN KEY (`edi_id`) REFERENCES `editoras` (`edi_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `livros` */
 
---
--- Estrutura para tabela `telefone`
---
+/*Table structure for table `livros_autores` */
 
-CREATE TABLE `telefone` (
-  `tel_id` int(11) NOT NULL,
-  `tel_cli_id` int(11) NOT NULL,
-  `tel_ddd` char(2) NOT NULL,
-  `tel_telefone` varchar(15) NOT NULL,
-  `tel_id_cliente` int(11) NOT NULL
+DROP TABLE IF EXISTS `livros_autores`;
+
+CREATE TABLE `livros_autores` (
+  `liv_id` int(11) NOT NULL,
+  `aut_id` int(11) NOT NULL,
+  KEY `fkLivrosAutores` (`liv_id`),
+  KEY `fkAutoresLivros` (`aut_id`),
+  CONSTRAINT `fkAutoresLivros` FOREIGN KEY (`aut_id`) REFERENCES `autores` (`autor_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkLivrosAutores` FOREIGN KEY (`liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Índices para tabelas despejadas
---
+/*Data for the table `livros_autores` */
 
---
--- Índices de tabela `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`cli_id`),
-  ADD KEY `fk_EndCliente` (`end_id`),
-  ADD KEY `fk_TelCliente` (`tel_id`);
+/*Table structure for table `telefones` */
 
---
--- Índices de tabela `compras`
---
-ALTER TABLE `compras`
-  ADD KEY `compralivro` (`id_compra`);
+DROP TABLE IF EXISTS `telefones`;
 
---
--- Índices de tabela `endereco`
---
-ALTER TABLE `endereco`
-  ADD KEY `enderecocliente` (`end_cli_id`);
+CREATE TABLE `telefones` (
+  `tel_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tel_num` varchar(20) NOT NULL,
+  `tel_ddd` varchar(3) NOT NULL,
+  `usu_id` int(11) NOT NULL,
+  PRIMARY KEY (`tel_id`),
+  KEY `fkTelefonesUsuario` (`usu_id`),
+  CONSTRAINT `fkTelefonesUsuario` FOREIGN KEY (`usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Índices de tabela `livros`
---
-ALTER TABLE `livros`
-  ADD PRIMARY KEY (`id_livros`),
-  ADD KEY `clienteautor` (`id_autor`),
-  ADD KEY `clienteeditora` (`id_editora`);
+/*Data for the table `telefones` */
 
---
--- Índices de tabela `telefone`
---
-ALTER TABLE `telefone`
-  ADD PRIMARY KEY (`tel_id`),
-  ADD KEY `fk_CliTel` (`tel_id_cliente`);
+/*Table structure for table `usuarios` */
 
---
--- AUTO_INCREMENT para tabelas despejadas
---
+DROP TABLE IF EXISTS `usuarios`;
 
---
--- AUTO_INCREMENT de tabela `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT;
+CREATE TABLE `usuarios` (
+  `usu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `usu_tipo` varchar(100) NOT NULL,
+  `usu_nome` varchar(100) NOT NULL,
+  `usu_cpf` varchar(11) NOT NULL,
+  `usu_dnasc` datetime NOT NULL,
+  `usu_email` varchar(150) NOT NULL,
+  `usu_senha` varchar(100) NOT NULL,
+  `usu_data` datetime NOT NULL,
+  PRIMARY KEY (`usu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- AUTO_INCREMENT de tabela `livros`
---
-ALTER TABLE `livros`
-  MODIFY `id_livros` int(10) NOT NULL AUTO_INCREMENT;
+/*Data for the table `usuarios` */
 
---
--- AUTO_INCREMENT de tabela `telefone`
---
-ALTER TABLE `telefone`
-  MODIFY `tel_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restrições para tabelas despejadas
---
-
---
--- Restrições para tabelas `cliente`
---
-ALTER TABLE `cliente`
-  ADD CONSTRAINT `fk_EndCliente` FOREIGN KEY (`end_id`) REFERENCES `endereco` (`end_cli_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_TelCliente` FOREIGN KEY (`tel_id`) REFERENCES `telefone` (`tel_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `compras`
---
-ALTER TABLE `compras`
-  ADD CONSTRAINT `compralivro` FOREIGN KEY (`id_compra`) REFERENCES `livros` (`id_livros`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `endereco`
---
-ALTER TABLE `endereco`
-  ADD CONSTRAINT `enderecocliente` FOREIGN KEY (`end_cli_id`) REFERENCES `cliente` (`cli_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `livros`
---
-ALTER TABLE `livros`
-  ADD CONSTRAINT `clienteautor` FOREIGN KEY (`id_autor`) REFERENCES `livros` (`id_livros`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `clienteeditora` FOREIGN KEY (`id_editora`) REFERENCES `livros` (`id_livros`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `telefone`
---
-ALTER TABLE `telefone`
-  ADD CONSTRAINT `fk_CliTel` FOREIGN KEY (`tel_id_cliente`) REFERENCES `cliente` (`cli_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
