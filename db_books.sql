@@ -20,9 +20,9 @@ USE `books`;
 DROP TABLE IF EXISTS `autores`;
 
 CREATE TABLE `autores` (
-  `autor_id` int(11) NOT NULL AUTO_INCREMENT,
-  `autor_nome` varchar(100) NOT NULL,
-  PRIMARY KEY (`autor_id`)
+  `aut_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aut_nome` varchar(100) NOT NULL,
+  PRIMARY KEY (`aut_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `autores` */
@@ -35,13 +35,13 @@ CREATE TABLE `compras` (
   `com_id` int(11) NOT NULL AUTO_INCREMENT,
   `com_data` date NOT NULL,
   `com_status` varchar(10) NOT NULL,
-  `usu_id` int(11) NOT NULL,
-  `liv_id` int(11) NOT NULL,
+  `com_usu_id` int(11) NOT NULL,
+  `com_liv_id` int(11) NOT NULL,
   PRIMARY KEY (`com_id`),
-  KEY `fkCompraUsuario` (`usu_id`),
-  KEY `fkCompraLivro` (`liv_id`),
-  CONSTRAINT `fkCompraLivro` FOREIGN KEY (`liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkCompraUsuario` FOREIGN KEY (`usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fkCompraUsuario` (`com_usu_id`),
+  KEY `fkCompraLivro` (`com_liv_id`),
+  CONSTRAINT `fkCompraLivro` FOREIGN KEY (`com_liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkCompraUsuario` FOREIGN KEY (`com_usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `compras` */
@@ -71,10 +71,10 @@ CREATE TABLE `enderecos` (
   `end_cep` varchar(20) NOT NULL,
   `end_rua` varchar(150) NOT NULL,
   `end_logradouro` varchar(100) NOT NULL,
-  `usu_id` int(11) NOT NULL,
+  `end_usu_id` int(11) NOT NULL,
   PRIMARY KEY (`end_id`),
-  KEY `fkEnderecoUsuario` (`usu_id`),
-  CONSTRAINT `fkEnderecoUsuario` FOREIGN KEY (`usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fkEnderecoUsuario` (`end_usu_id`),
+  CONSTRAINT `fkEnderecoUsuario` FOREIGN KEY (`end_usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `enderecos` */
@@ -92,10 +92,10 @@ CREATE TABLE `livros` (
   `liv_genero` varchar(100) NOT NULL,
   `liv_resumo` varchar(500) NOT NULL,
   `liv_numpagi` int(11) NOT NULL,
-  `edi_id` int(11) NOT NULL,
+  `liv_edi_id` int(11) NOT NULL,
   PRIMARY KEY (`liv_id`),
-  KEY `fkLivroEditora` (`edi_id`),
-  CONSTRAINT `fkLivroEditora` FOREIGN KEY (`edi_id`) REFERENCES `editoras` (`edi_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fkLivroEditora` (`liv_edi_id`),
+  CONSTRAINT `fkLivroEditora` FOREIGN KEY (`liv_edi_id`) REFERENCES `editoras` (`edi_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `livros` */
@@ -105,12 +105,12 @@ CREATE TABLE `livros` (
 DROP TABLE IF EXISTS `livros_autores`;
 
 CREATE TABLE `livros_autores` (
-  `liv_id` int(11) NOT NULL,
-  `aut_id` int(11) NOT NULL,
-  KEY `fkLivrosAutores` (`liv_id`),
-  KEY `fkAutoresLivros` (`aut_id`),
-  CONSTRAINT `fkAutoresLivros` FOREIGN KEY (`aut_id`) REFERENCES `autores` (`autor_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkLivrosAutores` FOREIGN KEY (`liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `lau_liv_id` int(11) NOT NULL,
+  `lau_aut_id` int(11) NOT NULL,
+  KEY `fkLivrosAutores` (`lau_liv_id`),
+  KEY `fkAutoresLivros` (`lau_aut_id`),
+  CONSTRAINT `fkAutoresLivros` FOREIGN KEY (`lau_aut_id`) REFERENCES `autores` (`aut_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkLivrosAutores` FOREIGN KEY (`lau_liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `livros_autores` */
@@ -123,10 +123,10 @@ CREATE TABLE `telefones` (
   `tel_id` int(11) NOT NULL AUTO_INCREMENT,
   `tel_num` varchar(20) NOT NULL,
   `tel_ddd` varchar(3) NOT NULL,
-  `usu_id` int(11) NOT NULL,
+  `tel_usu_id` int(11) NOT NULL,
   PRIMARY KEY (`tel_id`),
-  KEY `fkTelefonesUsuario` (`usu_id`),
-  CONSTRAINT `fkTelefonesUsuario` FOREIGN KEY (`usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fkTelefonesUsuario` (`tel_usu_id`),
+  CONSTRAINT `fkTelefonesUsuario` FOREIGN KEY (`tel_usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `telefones` */
