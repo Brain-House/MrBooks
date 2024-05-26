@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise - MySQL GUI v8.12 
-MySQL - 5.5.5-10.4.28-MariaDB : Database - books
+MySQL - 5.5.5-10.4.32-MariaDB : Database - books
 *********************************************************************
 */
 
@@ -25,8 +25,6 @@ CREATE TABLE `autores` (
   PRIMARY KEY (`aut_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Data for the table `autores` */
-
 /*Table structure for table `compras` */
 
 DROP TABLE IF EXISTS `compras`;
@@ -44,8 +42,6 @@ CREATE TABLE `compras` (
   CONSTRAINT `fkCompraUsuario` FOREIGN KEY (`com_usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Data for the table `compras` */
-
 /*Table structure for table `editoras` */
 
 DROP TABLE IF EXISTS `editoras`;
@@ -55,8 +51,6 @@ CREATE TABLE `editoras` (
   `edi_nome` varchar(100) NOT NULL,
   PRIMARY KEY (`edi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `editoras` */
 
 /*Table structure for table `enderecos` */
 
@@ -77,8 +71,6 @@ CREATE TABLE `enderecos` (
   CONSTRAINT `fkEnderecoUsuario` FOREIGN KEY (`end_usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Data for the table `enderecos` */
-
 /*Table structure for table `livros` */
 
 DROP TABLE IF EXISTS `livros`;
@@ -98,8 +90,6 @@ CREATE TABLE `livros` (
   CONSTRAINT `fkLivroEditora` FOREIGN KEY (`liv_edi_id`) REFERENCES `editoras` (`edi_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Data for the table `livros` */
-
 /*Table structure for table `livros_autores` */
 
 DROP TABLE IF EXISTS `livros_autores`;
@@ -112,8 +102,6 @@ CREATE TABLE `livros_autores` (
   CONSTRAINT `fkAutoresLivros` FOREIGN KEY (`lau_aut_id`) REFERENCES `autores` (`aut_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fkLivrosAutores` FOREIGN KEY (`lau_liv_id`) REFERENCES `livros` (`liv_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `livros_autores` */
 
 /*Table structure for table `telefones` */
 
@@ -128,8 +116,6 @@ CREATE TABLE `telefones` (
   KEY `fkTelefonesUsuario` (`tel_usu_id`),
   CONSTRAINT `fkTelefonesUsuario` FOREIGN KEY (`tel_usu_id`) REFERENCES `usuarios` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `telefones` */
 
 /*Table structure for table `usuarios` */
 
@@ -146,8 +132,6 @@ CREATE TABLE `usuarios` (
   `usu_data` datetime NOT NULL,
   PRIMARY KEY (`usu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `usuarios` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
