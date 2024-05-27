@@ -1,11 +1,13 @@
 <div align="center">
-    <img src="https://github.com/Brain-House/MrBooks/assets/116763922/01cce595-8993-4e3f-a017-8eb461aece75" heigth = "300"/>
+    <img src="https://github.com/Brain-House/MrBooks/assets/116763922/01cce595-8993-4e3f-a017-8eb461aece75" width="600px"/>
 </div>
 
-# Mr. Books
+<div>
+    <br><br><br>
+    <img src="https://github.com/Brain-House/MrBooks/assets/116763922/782ad719-2bf2-4805-a2de-d66b1e1a36c8" heigth="10px"/>
+</div>
 
-Projeto para criação de uma loja virtual de livros.
-
+Mr. Books - Projeto para criação de uma loja virtual de livros.
 
 ---
 
