@@ -2,7 +2,8 @@
 
 class Usuario extends Pessoa{
     public function __construct(
-        private int $usu_id,
+        private int $usu_id = "",
+        private string $usu_status = "",
         private string $usu_data = "",
         private string $usu_dnasc = "",
         private string $usu_email = "",
@@ -19,6 +20,11 @@ class Usuario extends Pessoa{
     public function getUsu_id()
     {
         return $this->usu_id;
+    }
+
+    public function getUsu_status()
+    {
+        return $this->usu_status;
     }
 
     public function getUsu_data()
@@ -54,9 +60,16 @@ class Usuario extends Pessoa{
 
     //Setter's
 
-    public function setUsu_dins($usu_dins)
+    public function setUsu_data($usu_data)
     {
-        $this->usu_dins = $usu_dins;
+        $this->usu_data = $usu_data;
+
+        return $this;
+    }
+
+    public function setUsu_status($usu_status)
+    {
+        $this->usu_status = $usu_status;
 
         return $this;
     }
@@ -95,6 +108,5 @@ class Usuario extends Pessoa{
 
         return $this;
     }
-
 }
 ?>
