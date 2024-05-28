@@ -1,8 +1,10 @@
 <?php
 
+require_once "Pessoa.class.php";
+
 class Usuario extends Pessoa{
     public function __construct(
-        private int $usu_id = "",
+        private int $usu_id = 0,
         private string $usu_status = "",
         private string $usu_data = "",
         private string $usu_dnasc = "",

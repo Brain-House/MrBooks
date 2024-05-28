@@ -1,9 +1,9 @@
 <?php
 
 class Livro{
-    public __construct(
-        private int $liv_id = "",
-        private int $liv_numpag = "",
+    public function __construct(
+        private int $liv_id = 0,
+        private int $liv_numpag = 0,
         private string $liv_status = "",
         private String $liv_titulo = "",
         private string $liv_isbn = "",
@@ -12,7 +12,7 @@ class Livro{
         private string $liv_genero = "",
         private string $liv_resumo = "",
         private string $liv_edi_id = ""
-        )
+        ){}
 
         public function getLiv_id()
         {

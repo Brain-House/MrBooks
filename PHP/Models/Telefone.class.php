@@ -2,7 +2,7 @@
 
 class Telefone{
     public function __construct(
-        private int $tel_id = "",
+        private int $tel_id = 0,
         private string $tel_num = "",
         private string $tel_ddd = ""
     ){}

@@ -2,7 +2,7 @@
 
 class Endereco{
     public function __construct(
-        private int $end_id = "",
+        private int $end_id = 0,
         private string $end_numero = "",
         private string $end_bairro = "",
         private string $end_uf = "",
