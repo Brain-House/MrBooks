@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <title>Mr.books</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <style>
+        body {
+            background: url('') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .subscribe-form,
+        .list-form,
+        .edit-form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #3a8bcd;
+            color: #fff;
+        }
+
+        .nav-tabs .nav-link {
+            border: 1px solid #343a40;
+            color: #343a40;
+        }
+
+        .submit_btn {
+            background-color: #3a8bcd;
+            color: #fff;
+            border: none;
+        }
+
+        .submit_btn:hover {
+            background-color: #495057;
+            color: #fff;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.9);
+            color: #fff;
+        }
+
+        .footer-menu ul li a {
+            color: #fff;
+        }
+
+        .footer-menu ul li a:hover {
+            color: #d1d1d1;
+        }
+
+        .social-icons ul li a {
+            color: #fff;
+        }
+
+        .social-icons ul li a:hover {
+            color: #d1d1d1;
+        }
+
+        .tab-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tab-pane {
+            width: 48%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/images/header-logo(2).png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cadastro.html">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subscribe Form Starts Here -->
+    <div class="subscribe-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container_form">
+                        <h1>Painel Administrativo</h1>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="publisher-tab" data-toggle="tab" href="#publisher" role="tab"
+                                    aria-controls="publisher" aria-selected="false">Editora</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab"
+                                    aria-controls="author" aria-selected="false">Autor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab"
+                                    aria-controls="edit" aria-selected="false">Editar Autor/Editora</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Cadastro de Usuário -->
+                            <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+                                <form class="form" action="#" method="post">
+                                    <div class="form_grupo"><br>
+                                        <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome"
+                                            required>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <input type="email" name="email" class="form_input" id="email"
+                                            placeholder="seuemail@email.com" required>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <label for="datanascimento" class="form_label">Data de Nascimento</label>
+                                        <input type="date" name="datanascimento" class="form_input" id="datanascimento"
+                                            placeholder="Data de Nascimento" required>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <label for="estadocivil" class="text">Estado civil</label>
+                                        <select name="estadocivil" class="dropdown" required>
+                                            <option selected disabled class="form_select_option" value="">Selecione
+                                            </option>
+                                            <option value="Solteiro" class="form_select_option">Solteiro(a)</option>
+                                            <option value="Casado" class="form_select_option">Casado(a)</option>
+                                            <option value="Divorciado" class="form_select_option">Divorciado(a)</option>
+                                            <option value="Viúvo" class="form_select_option">Viúvo(a)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <span class="legenda">Sexo:</span>
+                                        <div class="radio-btn">
+                                            <input type="radio" class="form_new_input" id="masculino" name="sexo"
+                                                value="Masculino" required="required">
+                                            <label for="masculino" class="radio_label form_label"> <span
+                                                    class="radio_new_btn"></span> Masculino</label>
+                                        </div>
+                                        <div class="radio-btn">
+                                            <input type="radio" class="form_new_input" id="feminino" name="sexo"
+                                                value="Feminino" required="required">
+                                            <label for="feminino" class="radio_label form_label"> <span
+                                                    class="radio_new_btn"></span> Feminino</label>
+                                        </div>
+                                    </div>
+                                    <div class="submit">
+                                        <input type="hidden" name="acao" value="enviar">
+                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Cadastro de Editora -->
+                            <div class="tab-pane fade" id="publisher" role="tabpanel" aria-labelledby="publisher-tab">
+                                <form class="form" action="#" method="post">
+                                    <div class="form_grupo"><br>
+                                        <input type="text" name="nomeEditora" class="form_input" id="nomeEditora"
+                                            placeholder="Nome da Editora" required>
+                                    </div>
+                                    <div class="submit">
+                                        <input type="hidden" name="acao" value="enviar">
+                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Cadastro de Autor -->
+                            <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+                                <form class="form" action="#" method="post">
+                                    <div class="form_grupo"><br>
+                                        <input type="text" name="nomeAutor" class="form_input" id="nomeAutor"
+                                            placeholder="Nome do Autor" required>
+                                    </div>
+                                    <div class="submit">
+                                        <input type="hidden" name="acao" value="enviar">
+                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Edição de Autor/Editora -->
+                            <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                                <form class="form" action="#" method="post">
+                                    <div class="form_grupo"><br>
+                                        <select name="editType" class="dropdown" id="editType" required>
+                                            <option selected disabled class="form_select_option" value="">Selecione
+                                            </option>
+                                            <option value="Editora" class="form_select_option">Editora</option>
+                                            <option value="Autor" class="form_select_option">Autor</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <input type="text" name="editName" class="form_input" id="editName"
+                                            placeholder="Nome" required>
+                                    </div>
+                                    <div class="submit">
+                                        <input type="hidden" name="acao" value="editar">
+                                        <button type="submit" name="Submit" class="submit_btn">Editar</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Starts Here -->
+    <!-- Footer Starts Here -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo">
+                        <img src="assets/images/header-logo(2).png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="cadastro.html">Trabalhe Conosco</a></li>
+                            <li><a href="contact.html">Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Ends Here -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
