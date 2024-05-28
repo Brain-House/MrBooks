@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS `autores`;
 
 CREATE TABLE `autores` (
   `aut_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aut_status` enum('0','1') NOT NULL,
   `aut_nome` varchar(100) NOT NULL,
   PRIMARY KEY (`aut_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -52,6 +53,7 @@ DROP TABLE IF EXISTS `editoras`;
 
 CREATE TABLE `editoras` (
   `edi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `edi_status` enum('0','1') NOT NULL,
   `edi_nome` varchar(100) NOT NULL,
   PRIMARY KEY (`edi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -69,7 +71,7 @@ CREATE TABLE `enderecos` (
   `end_uf` varchar(20) NOT NULL,
   `end_cidade` varchar(100) NOT NULL,
   `end_cep` varchar(20) NOT NULL,
-  `end_rua` varchar(150) NOT NULL,
+  `end_complemento` varchar(150) NOT NULL,
   `end_logradouro` varchar(100) NOT NULL,
   `end_usu_id` int(11) NOT NULL,
   PRIMARY KEY (`end_id`),
@@ -85,6 +87,7 @@ DROP TABLE IF EXISTS `livros`;
 
 CREATE TABLE `livros` (
   `liv_id` int(11) NOT NULL AUTO_INCREMENT,
+  `liv_status` enum('0','1') NOT NULL,
   `liv_titulo` varchar(100) NOT NULL,
   `liv_isbn` varchar(100) NOT NULL,
   `liv_idioma` varchar(20) NOT NULL,
@@ -137,6 +140,7 @@ DROP TABLE IF EXISTS `usuarios`;
 
 CREATE TABLE `usuarios` (
   `usu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `usu_status` enum('0','1') NOT NULL,
   `usu_tipo` varchar(100) NOT NULL,
   `usu_nome` varchar(100) NOT NULL,
   `usu_cpf` varchar(11) NOT NULL,
