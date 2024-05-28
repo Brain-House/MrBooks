@@ -58,6 +58,7 @@ if($_POST){
         <a href="listar_autores.php">Listar Autores</a>
         <a href="listar_editoras.php">Listar Editoras</a>
     </div>
+    <br><br><br>
     <form action = "#" method = "post">
         <label>Nome Editora</label>
         <input type="text" name="nome" id="nome" value = "<?php echo isset($_POST['nome'])?$_POST['nome']:''?>">
