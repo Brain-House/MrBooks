@@ -1,13 +1,10 @@
 <?php
 
-require_once "Pessoa.class.php";
-
 class Autor extends Pessoa {
-    public function __construct(
-        private int $aut_id = 0,
-        private string $aut_status = "Ativo",
-        $nome = ""
-    ) {
+    public function __construct(	private int		$aut_id 	= 0,
+									private string	$aut_status = "",
+													$nome 		= null)
+    {
         parent::__construct($nome); // Chamando o construtor da classe pai "Pessoa"
     }
 

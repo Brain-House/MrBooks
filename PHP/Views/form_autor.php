@@ -7,11 +7,12 @@ if($_POST){
         $msgerro = "O nome está vazio preencha por favor!";
     }
     else{
+		require_once "../Models/Conexao.php";
+		require_once "../Models/pessoa.class.php";
         require_once "../Models/Autor.class.php";
-        require_once "../Models/Conexao.php";
         require_once "../Models/AutorDAO.php";
 
-        $autor = new Autor(0, "Ativo", $_POST["nome"]);
+        $autor = new Autor(0, "", $_POST["nome"]);
 
         $autorDAO = new AutorDAO();
 

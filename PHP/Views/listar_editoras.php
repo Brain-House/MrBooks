@@ -68,26 +68,23 @@ echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #d
             <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>ID</th>
             <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Nome</th>
             <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Status</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Ações</th> <!-- Coluna para os botões -->
+            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Ações</th>
         </tr>
     </thead>
     <tbody>";
 
     foreach ($editora as $dado) {
-        $classe_botao = ($dado->status == "Ativo") ? "btn-inativar" : "btn-ativar";
         echo "<tr>
         <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_id}</td>
         <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_nome}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->status}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>
-            <form action='ativar_inativar_autor.php' method='post'>
-                <input type='hidden' name='autor_id' value='{$dado->edi_id}'>";
-        if($dado->status == "Ativo") {
-            echo "<a href='#?id={$dado->edi_id}&status=Inativo' class='btn btn-warning'>Inativar</a>";
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_status}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>";
+        if($dado->edi_status == "Ativo") {
+            echo "<a href='alterar_status_editora.php?edi_id={$dado -> edi_id}&edi_status=Inativo' class='btn btn-warning'>Inativar</a>";
         } else {
-            echo "<a href='#?id={$dado->edi_id}&status=Ativo' class='btn btn-warning'>Ativar</a>";
+            echo "<a href='alterar_status_editora.php?edi_id={$dado -> edi_id}&edi_status=Ativo' class='btn btn-warning'>Ativar</a>";
         }
-        echo "</form>
+        echo "
         </td>
       </tr>";
     }
