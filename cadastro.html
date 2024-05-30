@@ -132,18 +132,6 @@
                                 <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab"
                                     aria-controls="user" aria-selected="true">Usuário</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="publisher-tab" data-toggle="tab" href="#publisher" role="tab"
-                                    aria-controls="publisher" aria-selected="false">Editora</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab"
-                                    aria-controls="author" aria-selected="false">Autor</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab"
-                                    aria-controls="edit" aria-selected="false">Editar Autor/Editora</a>
-                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <!-- Cadastro de Usuário -->
@@ -156,6 +144,14 @@
                                     <div class="form_grupo">
                                         <input type="email" name="email" class="form_input" id="email"
                                             placeholder="seuemail@email.com" required>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <input type="password" name="senha" class="form_input" id="senha"
+                                            placeholder="Senha" required>
+                                    </div>
+                                    <div class="form_grupo">
+                                        <input type="password" name="confirmar_senha" class="form_input" id="confirmar_senha"
+                                            placeholder="Confirmar Senha" required>
                                     </div>
                                     <div class="form_grupo">
                                         <label for="datanascimento" class="form_label">Data de Nascimento</label>
@@ -188,63 +184,20 @@
                                                     class="radio_new_btn"></span> Feminino</label>
                                         </div>
                                     </div>
-                                    <div class="submit">
-                                        <input type="hidden" name="acao" value="enviar">
-                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Cadastro de Editora -->
-                            <div class="tab-pane fade" id="publisher" role="tabpanel" aria-labelledby="publisher-tab">
-                                <form class="form" action="#" method="post">
-                                    <div class="form_grupo"><br>
-                                        <input type="text" name="nomeEditora" class="form_input" id="nomeEditora"
-                                            placeholder="Nome da Editora" required>
-                                    </div>
-                                    <div class="submit">
-                                        <input type="hidden" name="acao" value="enviar">
-                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Cadastro de Autor -->
-                            <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
-                                <form class="form" action="#" method="post">
-                                    <div class="form_grupo"><br>
-                                        <input type="text" name="nomeAutor" class="form_input" id="nomeAutor"
-                                            placeholder="Nome do Autor" required>
-                                    </div>
-                                    <div class="submit">
-                                        <input type="hidden" name="acao" value="enviar">
-                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Edição de Autor/Editora -->
-                            <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
-                                <form class="form" action="#" method="post">
-                                    <div class="form_grupo"><br>
-                                        <select name="editType" class="dropdown" id="editType" required>
-                                            <option selected disabled class="form_select_option" value="">Selecione
-                                            </option>
-                                            <option value="Editora" class="form_select_option">Editora</option>
-                                            <option value="Autor" class="form_select_option">Autor</option>
-                                        </select>
+                                    <div class="form_grupo">
+                                        <input type="text" name="endereco" class="form_input" id="endereco"
+                                            placeholder="Endereço" required>
                                     </div>
                                     <div class="form_grupo">
-                                        <input type="text" name="editName" class="form_input" id="editName"
-                                            placeholder="Nome" required>
+                                        <input type="text" name="telefone" class="form_input" id="telefone"
+                                            placeholder="Telefone" required>
                                     </div>
                                     <div class="submit">
-                                        <input type="hidden" name="acao" value="editar">
-                                        <button type="submit" name="Submit" class="submit_btn">Editar</button>
+                                        <input type="hidden" name="acao" value="enviar">
+                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -252,7 +205,6 @@
         </div>
     </div>
 
-    <!-- Footer Starts Here -->
     <!-- Footer Starts Here -->
     <div class="footer">
         <div class="container">
