@@ -76,8 +76,7 @@ a {
 }
 
 .bg-dark {
-	background-color: #fff !important;
-	border-bottom: 1px solid #eee;
+	background-color: #fff !important;	
 }
 
 #navbarResponsive {
@@ -427,6 +426,7 @@ a {
 .btn-primary:focus {
 	color: #3a8bcd !important;
 	box-shadow: none !important;
+	
 }
 
 #filters .btn-primary {
@@ -1032,3 +1032,4 @@ a {
 	margin-bottom: 15px;
 	font-weight: bold;
 }
+
