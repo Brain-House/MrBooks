@@ -867,13 +867,11 @@ a {
 }
 
 .container_form h1 {
-
 	font-family: 'open_sansregular';
 	font-size: 2.3em;
-	color: #00dae0;
-	border-bottom: 1px #f0eded solid;
-	margin-bottom: 10px;
-	padding-bottom: 10px;
+	color: #000000;
+	
+
 }
 
 .form_grupo {
