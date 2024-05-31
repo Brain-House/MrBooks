@@ -30,8 +30,10 @@
         <a href="index.php">Home</a>
         <a href="form_editora.php">Cadastro Editoras</a>
         <a href="form_autor.php">Cadastro Autores</a>
+        <a href="form_livro.php">Cadastro Livro</a>
         <a href="listar_autores.php">Listar Autores</a>
         <a href="listar_editoras.php">Listar Editoras</a>
+        <a href="listar_livros.php">Listar Livros</a>
     </div>
 </body>
 </html>

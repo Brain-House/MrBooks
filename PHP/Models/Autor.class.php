@@ -14,6 +14,11 @@ class Autor extends Pessoa {
         return $this->aut_status;
     }
 
+    public function getAut_id()
+    {
+        return $this->aut_id;
+    }
+
     // Setter's
 
     public function setAut_status($aut_status) {
@@ -22,25 +27,12 @@ class Autor extends Pessoa {
         return $this;
     }
 
-        /**
-         * Get the value of aut_id
-         */ 
-        public function getAut_id()
-        {
-                return $this->aut_id;
-        }
+    public function setAut_id($aut_id)
+    {
+        $this->aut_id = $aut_id;
 
-        /**
-         * Set the value of aut_id
-         *
-         * @return  self
-         */ 
-        public function setAut_id($aut_id)
-        {
-                $this->aut_id = $aut_id;
-
-                return $this;
-        }
+        return $this;
+    }
 }
 
 ?>

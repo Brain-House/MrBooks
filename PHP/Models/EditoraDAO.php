@@ -6,11 +6,22 @@ class EditoraDAO extends Conexao{
     }
 
     public function inserir($editora){
-		$sql = "INSERT INTO editoras (edi_nome, status) VALUES(?,?)";
+		$sql = "INSERT INTO editoras (edi_nome, edi_status) VALUES(?,?)";
 		$stm = $this->db->prepare($sql);
 		$stm->bindValue(1, $editora->getEdi_nome());
         $stm->bindValue(2, $editora->getEdi_status());
 		$stm->execute();
+		$this->db = null;
+	}
+
+    public function buscar_editoras_ativas($editora)
+	{
+		$sql = "SELECT * FROM editoras WHERE edi_status = ?";
+			
+		$stm = $this->db->prepare($sql);
+		$stm->bindValue(1,$editora->getEdi_status());
+		$stm->execute();
+        return $stm->fetchAll(PDO::FETCH_OBJ);
 		$this->db = null;
 	}
 

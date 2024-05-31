@@ -4,7 +4,7 @@ class Editora{
     public function __construct(
         private int $edi_id = 0,
         private string $edi_nome = "",
-        private string $edi_status = "Ativo"
+        private string $edi_status = ""
     ){}
     
     //Getter's
