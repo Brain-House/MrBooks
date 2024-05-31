@@ -95,6 +95,7 @@ CREATE TABLE `livros` (
   `liv_genero` varchar(100) NOT NULL,
   `liv_resumo` varchar(500) NOT NULL,
   `liv_numpagi` int(11) NOT NULL,
+  `liv_imagem` varchar(100) NOT NULL,
   `liv_edi_id` int(11) NOT NULL,
   PRIMARY KEY (`liv_id`),
   KEY `fkLivroEditora` (`liv_edi_id`),
