@@ -79,26 +79,28 @@ echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #d
             <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Páginas</th>
             <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Categoria</th>
             <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Status</th>
+            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Ação</th>
         </tr>
     </thead>
     <tbody>";
 
-    foreach ($livro as $dado) {
+    foreach ($livro as $livro) {
         echo "<tr>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_id}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_titulo}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_isbn}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_idioma}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_formato}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_genero}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_resumo}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->liv_numpagi}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->nome_editora}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_id}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_titulo}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_isbn}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_idioma}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_formato}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_genero}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_resumo}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_numpagi}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->nome_editora}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$livro->liv_status}</td>
         <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>";
-        if($dado->liv_status == "Ativo") {
-            echo "<a href='alterar_status.php?liv_id={$dado -> liv_status}&aut_status=Inativo' class='btn btn-warning'>Inativar</a>";
+        if($livro->liv_status == "Ativo") {
+            echo "<a href='alterar_status_livro.php?liv_id={$livro -> liv_id}&liv_status=Inativo'>Inativar</a>";
         } else {
-            echo "<a href='alterar_status.php?liv_id={$dado -> liv_status}&aut_status=Ativo' class='btn btn-warning'>Ativar</a>";
+            echo "<a href='alterar_status_livro.php?liv_id={$livro -> liv_id}&liv_status=Ativo'>Ativar</a>";
         }
         echo "
         </td>
@@ -109,7 +111,7 @@ echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #d
 
     echo "<br><br><br>";
 
-    echo "<a href = 'form_autor.php'>Cadastrar autor Novamente</a>";
+    echo "<a href = 'form_livro.php'>Cadastrar livro Novamente</a>";
     
 
 ?>

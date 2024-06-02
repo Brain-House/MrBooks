@@ -75,16 +75,16 @@ echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #d
     </thead>
     <tbody>";
 
-    foreach ($editora as $dado) {
+    foreach ($editora as $editora) {
         echo "<tr>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_id}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_nome}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_status}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$editora->edi_id}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$editora->edi_nome}</td>
+        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$editora->edi_status}</td>
         <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>";
-        if($dado->edi_status == "Ativo") {
-            echo "<a href='alterar_status_editora.php?edi_id={$dado -> edi_id}&edi_status=Inativo' class='btn btn-warning'>Inativar</a>";
+        if($editora->edi_status == "Ativo") {
+            echo "<a href='alterar_status_Editora.php?edi_id={$editora -> edi_id}&edi_status=Inativo' class='btn btn-warning'>Inativar</a>";
         } else {
-            echo "<a href='alterar_status_editora.php?edi_id={$dado -> edi_id}&edi_status=Ativo' class='btn btn-warning'>Ativar</a>";
+            echo "<a href='alterar_status_Editora.php?edi_id={$editora -> edi_id}&edi_status=Ativo' class='btn btn-warning'>Ativar</a>";
         }
         echo "
         </td>

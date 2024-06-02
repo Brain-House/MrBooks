@@ -22,6 +22,19 @@ class LivroDAO extends Conexao{
 		$this->db = null;
 	}
 
+    public function alterar_status_livros($Livro){
+        $sql = "UPDATE livros SET liv_status = ? WHERE liv_id = ?";
+        
+		$stm = $this->db->prepare($sql);
+		
+		$stm -> bindValue(1, $Livro -> getLiv_status());
+		$stm -> bindValue(2, $Livro -> getLiv_id());
+        
+		$stm -> execute();
+        
+		$this -> db = null;
+    }
+
     public function buscar_todos()
 {
     $sql = "SELECT l.*, e.edi_nome AS nome_editora FROM livros l JOIN editoras e ON l.liv_edi_id = e.edi_id";

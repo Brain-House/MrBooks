@@ -82,9 +82,9 @@ echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #d
         <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->aut_status}</td>
         <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>";
         if($dado->aut_status == "Ativo") {
-            echo "<a href='alterar_status.php?aut_id={$dado -> aut_id}&aut_status=Inativo' class='btn btn-warning'>Inativar</a>";
+            echo "<a href='alterar_status.php?aut_id={$dado -> aut_id}&aut_status=Inativo'>Inativar</a>";
         } else {
-            echo "<a href='alterar_status.php?aut_id={$dado -> aut_id}&aut_status=Ativo' class='btn btn-warning'>Ativar</a>";
+            echo "<a href='alterar_status.php?aut_id={$dado -> aut_id}&aut_status=Ativo'>Ativar</a>";
         }
         echo "
         </td>

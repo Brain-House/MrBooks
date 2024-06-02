@@ -36,7 +36,7 @@ class EditoraDAO extends Conexao{
     
     public function alterar_status_editora($editora)
     {
-        $sql = "UPDATE autores SET aut_status = ? WHERE aut_id = ?";
+        $sql = "UPDATE editoras SET edi_status = ? WHERE edi_id = ?";
         
 		$stm = $this->db->prepare($sql);
 		
