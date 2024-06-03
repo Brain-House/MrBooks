@@ -1,356 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-    <title>Mr.books</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+        <title>Mr.books</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/tooplate-main.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="assets/css/fontawesome.css">
+        <link rel="stylesheet" href="assets/css/tooplate-main.css">
+        <link rel="stylesheet" href="assets/css/owl.css">
 
-    <style>
-        body {
-            background: url('') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Roboto', sans-serif;
-        }
+        <style>
+            body {
+                background: url('') no-repeat center center fixed;
+                background-size: cover;
+                font-family: 'Roboto', sans-serif;
+            }
 
-        .subscribe-form,
-        .list-form,
-        .edit-form {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
+            .subscribe-form,
+            .list-form,
+            .edit-form {
+                background: rgba(255, 255, 255, 0.8);
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-top: 50px;
+            }
 
-        .nav-tabs .nav-link.active {
-            background-color: #3a8bcd;
-            color: #fff;
-        }
+            .nav-tabs .nav-link.active {
+                background-color: #3a8bcd;
+                color: #fff;
+            }
 
-        .nav-tabs .nav-link {
-            border: 1px solid #343a40;
-            color: #343a40;
-        }
+            .nav-tabs .nav-link {
+                border: 1px solid #343a40;
+                color: #343a40;
+            }
 
-        .submit_btn {
-            background-color: #3a8bcd;
-            color: #fff;
-            border: none;
-        }
+            .submit_btn {
+                background-color: #3a8bcd;
+                color: #fff;
+                border: none;
+            }
 
-        .submit_btn:hover {
-            background-color: #495057;
-            color: #fff;
-        }
+            .submit_btn:hover {
+                background-color: #495057;
+                color: #fff;
+            }
 
-        .footer {
-            background: rgba(255, 255, 255, 0.9);
-            color: #fff;
-        }
+            .footer {
+                background: rgba(255, 255, 255, 0.9);
+                color: #fff;
+            }
 
-        .footer-menu ul li a {
-            color: #fff;
-        }
+            .footer-menu ul li a {
+                color: #fff;
+            }
 
-        .footer-menu ul li a:hover {
-            color: #d1d1d1;
-        }
+            .footer-menu ul li a:hover {
+                color: #d1d1d1;
+            }
 
-        .social-icons ul li a {
-            color: #fff;
-        }
+            .social-icons ul li a {
+                color: #fff;
+            }
 
-        .social-icons ul li a:hover {
-            color: #d1d1d1;
-        }
+            .social-icons ul li a:hover {
+                color: #d1d1d1;
+            }
 
-        .tab-content {
-            display: flex;
-            justify-content: space-between;
-        }
+            .tab-content {
+                display: flex;
+                justify-content: space-between;
+            }
 
-        .tab-pane {
-            width: 48%;
-        }
+            .tab-pane {
+                width: 48%;
+            }
 
-        /* Specific CSS for Nova Compra section */
-        .nova-compra-form label,
-        .nova-compra-form input,
-        .nova-compra-form select,
-        .nova-compra-form textarea {
-            display: block;
-            margin-bottom: 10px;
-            width: 100%;
-        }
+            /* Specific CSS for Nova Compra section */
+            .nova-compra-form label,
+            .nova-compra-form input,
+            .nova-compra-form select,
+            .nova-compra-form textarea {
+                display: block;
+                margin-bottom: 10px;
+                width: 100%;
+            }
 
-        .nova-compra-form input[type="submit"] {
-            background-color: #3a8bcd;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+            .nova-compra-form input[type="submit"] {
+                background-color: #3a8bcd;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
 
-        .nova-compra-form input[type="submit"]:hover {
-            background-color: #495057;
-        }
-    </style>
-</head>
+            .nova-compra-form input[type="submit"]:hover {
+                background-color: #495057;
+            }
+        </style>
+    </head>
 
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="assets/images/header-logo(2).png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Inicio
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.html">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contato</a>
-                    </li>
-                </ul>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="assets/images/header-logo(2).png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Inicio
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.html">Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contato</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Subscribe Form Starts Here -->
-    <div class="subscribe-form">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="container_form">
-                        <h1>Painel Administrativo</h1>
+        <!-- Form Starts Here -->
+        <div class="subscribe-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container_form">
+                            <h1>Painel Administrativo</h1>
 
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-                            <li class="nav-item">
-                                <a class="nav-link" id="publisher-tab" data-toggle="tab" href="#publisher" role="tab"
-                                    aria-controls="publisher" aria-selected="false">Editora</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="publisher-tab" data-toggle="tab" href="#publisher" role="tab"
+                                        aria-controls="publisher" aria-selected="false">Editora</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab"
-                                    aria-controls="author" aria-selected="false">Autor</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab"
+                                        aria-controls="author" aria-selected="false">Autor</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab"
-                                    aria-controls="edit" aria-selected="false">Editar Autor/Editora</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab"
+                                        aria-controls="edit" aria-selected="false">Editar Autor/Editora</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" id="new-purchase-tab" data-toggle="tab" href="#new-purchase" role="tab"
-                                    aria-controls="new-purchase" aria-selected="false">Nova compra</a>
-                            </li>
-                        </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="new-purchase-tab" data-toggle="tab" href="#new-purchase"
+                                        role="tab" aria-controls="new-purchase" aria-selected="false">Nova compra</a>
+                                </li>
+                            </ul>
 
-                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-content" id="myTabContent">
 
-                            <!-- Cadastro de Editora -->
-                            <div class="tab-pane fade" id="publisher" role="tabpanel" aria-labelledby="publisher-tab">
-                                <form class="form" action="#" method="post">
-                                    <div class="form_grupo"><br>
-                                        <input type="text" name="nomeEditora" class="form_input" id="nomeEditora"
-                                            placeholder="Nome da Editora" required>
-                                    </div>
-                                    <div class="submit">
-                                        <input type="hidden" name="acao" value="enviar">
-                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
-                                    </div>
-                                </form>
-                            </div>
+                                <!-- Cadastro de Editora -->
+                                <div class="tab-pane fade" id="publisher" role="tabpanel" aria-labelledby="publisher-tab">
+                                    <form class="form" action="#" method="post">
+                                        <div class="form_grupo"><br>
+                                            <input type="text" name="nomeEditora" class="form_input" id="nomeEditora"
+                                                placeholder="Nome da Editora" required>
+                                        </div>
+                                        <div class="submit">
+                                            <input type="hidden" name="acao" value="enviar">
+                                            <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+                                        </div>
+                                    </form>
+                                </div>
 
-                            <!-- Cadastro de Autor -->
-                            <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
-                                <form class="form" action="#" method="post">
-                                    <div class="form_grupo"><br>
-                                        <input type="text" name="nomeAutor" class="form_input" id="nomeAutor"
-                                            placeholder="Nome do Autor" required>
-                                    </div>
-                                    <div class="submit">
-                                        <input type="hidden" name="acao" value="enviar">
-                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
-                                    </div>
-                                </form>
-                            </div>
+                                <!-- Cadastro de Autor -->
+                                <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+                                    <form class="form" action="#" method="post">
+                                        <div class="form_grupo"><br>
+                                            <input type="text" name="nomeAutor" class="form_input" id="nomeAutor"
+                                                placeholder="Nome do Autor" required>
+                                        </div>
+                                        <div class="submit">
+                                            <input type="hidden" name="acao" value="enviar">
+                                            <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+                                        </div>
+                                    </form>
+                                </div>
 
-                            <!-- Edição de Autor/Editora -->
-                            <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
-                                <form class="form" action="#" method="post">
-                                    <div class="form_grupo"><br>
-                                        <select name="editType" class="dropdown" id="editType" required>
-                                            <option selected disabled class="form_select_option" value="">Selecione
-                                            </option>
-                                            <option value="Editora" class="form_select_option">Editora</option>
-                                            <option value="Autor" class="form_select_option">Autor</option>
-                                        </select>
-                                    </div>
-                                    <div class="form_grupo">
-                                        <input type="text" name="editName" class="form_input" id="editName"
-                                            placeholder="Nome" required>
-                                    </div>
-                                    <div class="submit">
-                                        <input type="hidden" name="acao" value="editar">
-                                        <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Nova Compra -->
-                            <div class="tab-pane fade" id="new-purchase" role="tabpanel" aria-labelledby="new-purchase-tab">
-                                <div class="content nova-compra-form">
-                                    <div class="container">
-                                        <br><h2>Nova Compra</h2><br>
-                                        <form>
-                                            <label for="LIV_STATUS">Status:</label>
-                                            <select name="LIV_STATUS" id="LIV_STATUS">
-                                                <option value="0">Inativa</option>
-                                                <option value="1" selected="selected">Ativa</option>
+                                <!-- Edição de Autor/Editora -->
+                                <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                                    <form class="form" action="#" method="post">
+                                        <div class="form_grupo"><br>
+                                            <select name="editType" class="dropdown" id="editType" required>
+                                                <option selected disabled class="form_select_option" value="">Selecione
+                                                </option>
+                                                <option value="Editora" class="form_select_option">Editora</option>
+                                                <option value="Autor" class="form_select_option">Autor</option>
                                             </select>
+                                        </div>
+                                        <div class="form_grupo">
+                                            <input type="text" name="editName" class="form_input" id="editName"
+                                                placeholder="Nome" required>
+                                        </div>
+                                        <div class="submit">
+                                            <input type="hidden" name="acao" value="editar">
+                                            <button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+                                        </div>
+                                    </form>
+                                </div>
 
-                                            <label for="LIV_TITULO">Titulo:</label>
-                                            <input type="text" name="LIV_TITULO" id="LIV_TITULO">
+                                <!-- Nova Compra -->
+                                <div class="tab-pane fade" id="new-purchase" role="tabpanel"
+                                    aria-labelledby="new-purchase-tab">
+                                    <div class="content nova-compra-form">
+                                        <div class="container">
+                                            <br>
+                                            <h2>Nova Compra</h2><br>
+                                            <form>
+                                                <label for="LIV_STATUS" >Status:</label>
+                                                <select name="LIV_STATUS" id="LIV_STATUS">
+                                                    <option value="0">Inativa</option>
+                                                    <option value="1" selected="selected">Ativa</option>
+                                                </select>
 
-                                            <label for="LIV_ISBN">ISBN:</label>
+                                                <label for="LIV_TITULO" class="form_input">Titulo:</label>
+                                                <input type="text" name="LIV_TITULO" id="LIV_TITULO">
+
+                                                <label for="LIV_ISBN">ISBN:</label>
 
 
-                                            <input type="text" name="LIV_ISBN" id="LIV_ISBN">
+                                                <input type="text" name="LIV_ISBN" id="LIV_ISBN">
 
-                                            <label for="LIV_AUTOR">Autor:</label>
-                                            <input type="text" name="LIV_AUTOR" id="LIV_AUTOR">
+                                                <label for="LIV_AUTOR">Autor:</label>
+                                                <input type="text" name="LIV_AUTOR" id="LIV_AUTOR">
 
-                                            <label for="LIV_EDICAO">Edição:</label>
-                                            <input type="text" name="LIV_EDICAO" id="LIV_EDICAO">
+                                                <label for="LIV_EDICAO">Edição:</label>
+                                                <input type="text" name="LIV_EDICAO" id="LIV_EDICAO">
 
-                                            <label for="LIV_EDITORA">Editora:</label>
-                                            <input type="text" name="LIV_EDITORA" id="LIV_EDITORA">
+                                                <label for="LIV_EDITORA">Editora:</label>
+                                                <input type="text" name="LIV_EDITORA" id="LIV_EDITORA">
 
-                                            <label for="LIV_GENERO">Gênero:</label>
-                                            <input type="text" name="LIV_GENERO" id="LIV_GENERO">
+                                                <label for="LIV_GENERO">Gênero:</label>
+                                                <input type="text" name="LIV_GENERO" id="LIV_GENERO">
 
-                                            <label for="LIV_RESUMO">Resumo:</label>
-                                            <textarea rows="10" cols="50" name="LIV_RESUMO" id="LIV_RESUMO"></textarea>
+                                                <label for="LIV_RESUMO">Resumo:</label>
+                                                <textarea rows="10" cols="50" name="LIV_RESUMO" id="LIV_RESUMO"></textarea>
 
-                                            <label for="LIV_DT_LANCAMENTO">Data de Lançamento:</label>
-                                            <input type="text" name="LIV_DT_LANCAMENTO" id="LIV_DT_LANCAMENTO">
+                                                <label for="LIV_DT_LANCAMENTO">Data de Lançamento:</label>
+                                                <input type="text" name="LIV_DT_LANCAMENTO" id="LIV_DT_LANCAMENTO">
 
-                                            <label for="LIV_QTDE_PAGS">Quantidade de Páginas:</label>
-                                            <input type="text" name="LIV_QTDE_PAGS" id="LIV_QTDE_PAGS">
+                                                <label for="LIV_QTDE_PAGS">Quantidade de Páginas:</label>
+                                                <input type="text" name="LIV_QTDE_PAGS" id="LIV_QTDE_PAGS">
 
-                                            <label for="LIV_ALTURA">Altura:</label>
-                                            <input type="text" name="LIV_ALTURA" id="LIV_ALTURA">
+                                                <label for="LIV_ALTURA">Altura:</label>
+                                                <input type="text" name="LIV_ALTURA" id="LIV_ALTURA">
 
-                                            <label for="LIV_LARGURA">Largura:</label>
-                                            <input type="text" name="LIV_LARGURA" id="LIV_LARGURA">
+                                                <label for="LIV_LARGURA">Largura:</label>
+                                                <input type="text" name="LIV_LARGURA" id="LIV_LARGURA">
 
-                                            <label for="LIV_PROFUNDIDADE">Profundidade:</label>
-                                            <input type="text" name="LIV_PROFUNDIDADE" id="LIV_PROFUNDIDADE">
+                                                <label for="LIV_PROFUNDIDADE">Profundidade:</label>
+                                                <input type="text" name="LIV_PROFUNDIDADE" id="LIV_PROFUNDIDADE">
 
-                                            <label for="LIV_PESO">Peso:</label>
-                                            <input type="text" name="LIV_PESO" id="LIV_PESO">
+                                                <label for="LIV_PESO">Peso:</label>
+                                                <input type="text" name="LIV_PESO" id="LIV_PESO">
 
-                                            <label for="LIV_PRECO">Preço:</label>
-                                            <input type="text" name="LIV_PRECO" id="LIV_PRECO">
+                                                <label for="LIV_PRECO">Preço:</label>
+                                                <input type="text" name="LIV_PRECO" id="LIV_PRECO">
 
-                                            <label for="LIV_CAPA">Link imagem de capa:</label>
-                                            <input type="text" name="LIV_CAPA" id="LIV_CAPA">
+                                                <label for="LIV_CAPA">Link imagem de capa:</label>
+                                                <input type="text" name="LIV_CAPA" id="LIV_CAPA">
 
-                                            <label for="LIV_SINOPSE_AUTOR">Sinopse do Autor:</label>
-                                            <textarea rows="10" cols="50" name="LIV_SINOPSE_AUTOR" id="LIV_SINOPSE_AUTOR"></textarea>
-                                            
-                                            <input type="submit" value="Cadastrar">
-                                        </form>
+                                                <label for="LIV_SINOPSE_AUTOR">Sinopse do Autor:</label>
+                                                <textarea rows="10" cols="50" name="LIV_SINOPSE_AUTOR"
+                                                    id="LIV_SINOPSE_AUTOR"></textarea>
+                                                <input type="submit" value="Cadastrar">
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Subscribe Form Ends Here -->
+        <!-- Form Ends Here -->
 
-<!-- Footer Starts Here -->
-<div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="logo">
-            <img src="assets/images/header-logo(2).png" alt="">
-          </div>
+        <!-- Footer Starts Here -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <img src="assets/images/footer-img.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Política de Privacidade</a></li>
+                                <li><a href="cadastro.html">Trabalhe Conosco</a></li>
+                                <li><a href="contact.html">Contato</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-12">
-          <div class="footer-menu">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">Política de Privacidade</a></li>
-              <li><a href="cadastro.html">Trabalhe Conosco</a></li>
-              <li><a href="contact.html">Contato</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="social-icons">
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-rss"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Footer Ends Here -->
+        <!-- Footer Ends Here -->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Additional Scripts -->
-  <script src="assets/js/custom.js"></script>
-  <script src="assets/js/owl.js"></script>
+        <!-- Additional Scripts -->
+        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/owl.js"></script>
 
-  <script language="text/Javascript">
-    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-    function clearField(t) {                   //declaring the array outside of the
-      if (!cleared[t.id]) {                      // function makes it static and global
-        cleared[t.id] = 1;  // you could use true and false, but that's more typing
-        t.value = '';         // with more chance of typos
-        t.style.color = '#fff';
-      }
-    }
-  </script>
-</body>
+        <script language="text/Javascript">
+            cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+            function clearField(t) {                   //declaring the array outside of the
+                if (!cleared[t.id]) {                      // function makes it static and global
+                    cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                    t.value = '';         // with more chance of typos
+                    t.style.color = '#fff';
+                }
+            }
+        </script>
+    </body>
 
 </html>
-
-
