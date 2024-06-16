@@ -11,7 +11,8 @@
             private string $usu_email = "",
             protected string $usu_senha = "",
             private string $usu_tipo = "",
-            private string $usu_cpf = ""
+            private string $usu_cpf = "",
+            $nome = ""
         )
         {
             parent:: __construct($nome);    //Construção da classe filha "Pessoa"

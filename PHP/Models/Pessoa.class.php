@@ -1,7 +1,7 @@
 <?php
 
     class Pessoa{
-        public function __construct(private string $nome){}
+        public function __construct(private string $nome = ""){}
 
         //Get
         public function getNome()

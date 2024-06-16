@@ -11,7 +11,7 @@
             $stm->bindValue(1, $usuario->getUsu_id());
             $stm->bindValue(2, $usuario->getUsu_status());
             $stm->bindValue(3, $usuario->getUsu_tipo());
-            $stm->bindValue(4, $usuario->getUsu_nome());
+            $stm->bindValue(4, $usuario->getNome());
             $stm->bindValue(5, $usuario->getUsu_cpf());
             $stm->bindValue(6, $usuario->getUsu_dnasc());
             $stm->bindValue(7, $usuario->getUsu_email());

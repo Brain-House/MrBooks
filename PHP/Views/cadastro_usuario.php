@@ -2,7 +2,6 @@
 
     require_once "../Models/Conexao.php";
     require_once "../Models/Pessoa.class.php";
-    require_once "../Models/PessoaDAO.php";
     require_once "../Models/Usuario.class.php";
     require_once "../Models/UsuarioDAO.php";
     require_once "../Models/Telefone.class.php";
@@ -11,44 +10,66 @@
     require_once "../Models/EnderecoDAO.php";
 
 
-    $msgerro = array("","","","","","","","");
+    $msgerro = array("","","","","","","","","","","","","","");
     $erro = false;
 
     if ($_POST) {
-        if (empty($_POST[""])) {
-            $msgerro[0] = "O título está vazio, preencha por favor!";
+        if (empty($_POST["datanasc"])) {
+            $msgerro[0] = "A data de nascimento está vazia, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[1] = "O ISBN está vazio, preencha por favor!";
+        if (empty($_POST["email"])) {
+            $msgerro[1] = "O e-mail está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[2] = "O editora está vazio, preencha por favor!";
+        if (empty($_POST["senha"])) {
+            $msgerro[2] = "A senha está vazia, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[3] = "O idioma está vazio, preencha por favor!";
+        if (empty($_POST["tipo"])) {
+            $msgerro[3] = "O tipo de usuário está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[4] = "O formato está vazio, preencha por favor!";
+        if (empty($_POST["cpf"])) {
+            $msgerro[4] = "O CPF está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[5] = "O gênero está vazio, preencha por favor!";
+        if (empty($_POST["telefone"])) {
+            $msgerro[5] = "O telefone está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[6] = "O resumo está vazio, preencha por favor!";
+        if (empty($_POST["ddd"])) {
+            $msgerro[6] = "O DDD está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST[""])) {
-            $msgerro[7] = "O número de páginas está vazio, preencha por favor!";
+        if (empty($_POST["numerocasa"])) {
+            $msgerro[7] = "O número da casa está vazio, preencha por favor!";
             $erro = true;
         }
-
-        $editora = $_POST["editora"];
+        if (empty($_POST["bairro"])) {
+            $msgerro[8] = "O bairro está vazio, preencha por favor!";
+            $erro = true;
+        }
+        if (empty($_POST["uf"])) {
+            $msgerro[9] = "A UF está vazia, preencha por favor!";
+            $erro = true;
+        }
+        if (empty($_POST["cidade"])) {
+            $msgerro[10] = "A cidade está vazia, preencha por favor!";
+            $erro = true;
+        }
+        if (empty($_POST["cep"])) {
+            $msgerro[11] = "O CEP está vazio, preencha por favor!";
+            $erro = true;
+        }
+        if (empty($_POST["rua"])) {
+            $msgerro[12] = "A rua está vazia, preencha por favor!";
+            $erro = true;
+        }
+        if (empty($_POST["logradouro"])) {
+            $msgerro[13] = "O logradouro está vazio, preencha por favor!";
+            $erro = true;
+        }
 
         if (!$erro) {
 
@@ -60,7 +81,8 @@
                 $_POST["email"],
                 $_POST["senha"],
                 $_POST["tipo"],
-                $_POST["cpf"]
+                $_POST["cpf"],
+                $_POST["nome"]
             );
 
             $UsuarioDAO = new UsuarioDAO();
@@ -72,7 +94,7 @@
                 $_POST['ddd']
             );
 
-            $TelefoneDAO = new TelfoneDAO();
+            $TelefoneDAO = new TelefoneDAO();
             $TelefoneDAO->inserir($telefone);
 
             $endereco = new Endereco(
@@ -137,80 +159,100 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h1 class="card-title text-center">Cadastro de Livro</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Cadastro de Usuário</h1>
 
-                        <form action="#" method="POST">
-                            <div class="mb-3">
-                                <label for="titulo" class="form-label">Título</label>
-                                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Digite o título do livro" value="<?php echo isset($_POST['titulo']) ? $_POST['titulo'] : '' ?>">
-                                <div><?php echo $msgerro[0]; ?></div>
-                            </div>
+                    <form action="#" method="POST">
 
-                            <div class="mb-3">
-                                <label for="ISBN" class="form-label">ISBN do Livro</label>
-                                <input type="text" name="ISBN" class="form-control" id="ISBN" placeholder="Digite o ISBN do livro" value="<?php echo isset($_POST['ISBN']) ? $_POST['ISBN'] : '' ?>">
-                                <div><?php echo $msgerro[1]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome" required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="editora" class="form-label">Editora</label>
-                                <select id="editora" name="editora" class="form-select">
-                                    <option value="0">Escolha uma editora</option>
-                                    <?php
-                                    $editora = new Editora(edi_status:"Ativo");
-                                    $editoraDAO = new EditoraDAO();
-                                    $ret = $editoraDAO->buscar_editoras_ativas($editora);
-                                    foreach ($ret as $dado) {
-                                        $selected = isset($_POST["editora"]) && $_POST["editora"] == $dado->edi_id ? 'selected' : '';
-                                        echo "<option value='{$dado->edi_id}' $selected>{$dado->edi_nome}</option>";
-                                    }
-                                    ?>
-                                </select>
-                                <div><?php echo $msgerro[2]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="datanasc" class="form-label">Data de Nascimento</label>
+                            <input type="date" name="datanasc" class="form-control" id="datanasc" required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="idioma" class="form-label">Idioma</label>
-                                <input type="text" name="idioma" class="form-control" id="idioma" placeholder="Digite o idioma do livro" value="<?php echo isset($_POST['idioma']) ? $_POST['idioma'] : '' ?>">
-                                <div><?php echo $msgerro[3]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Digite o e-mail" required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="formato" class="form-label">Formato</label>
-                                <input type="text" name="formato" class="form-control" id="formato" placeholder="Digite o formato do livro" value="<?php echo isset($_POST['formato']) ? $_POST['formato'] : '' ?>">
-                                <div><?php echo $msgerro[4]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite a senha" required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="genero" class="form-label">Gênero</label>
-                                <input type="text" name="genero" class="form-control" id="genero" placeholder="Digite o gênero do livro" value="<?php echo isset($_POST['genero']) ? $_POST['genero'] : '' ?>">
-                                <div><?php echo $msgerro[5]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo de Usuário</label>
+                            <select id="tipo" name="tipo" class="form-select" required>
+                                <option value="1">Administrador</option>
+                                <option value="2">Usuário Comum</option>
+                            </select>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="resumo" class="form-label">Resumo</label>
-                                <input type="text" name="resumo" class="form-control" id="resumo" placeholder="Digite o resumo do livro" value="<?php echo isset($_POST['resumo']) ? $_POST['resumo'] : '' ?>">
-                                <div><?php echo $msgerro[6]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="npaginas" class="form-label">Número de Páginas</label>
-                                <input type="number" name="npaginas" class="form-control" id="npaginas" placeholder="Digite o número de páginas do livro" value="<?php echo isset($_POST['npaginas']) ? $_POST['npaginas'] : '' ?>">
-                                <div><?php echo $msgerro[7]; ?></div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone" required>
+                        </div>
 
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Cadastrar Livro</button>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="mb-3">
+                            <label for="ddd" class="form-label">DDD</label>
+                            <input type="text" name="ddd" class="form-control" id="ddd" placeholder="Digite o DDD" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="numerocasa" class="form-label">Número da Casa</label>
+                            <input type="text" name="numerocasa" class="form-control" id="numerocasa" placeholder="Digite o número da casa" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bairro" class="form-label">Bairro</label>
+                            <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Digite o bairro" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="uf" class="form-label">UF</label>
+                            <input type="text" name="uf" class="form-control" id="uf" placeholder="Digite a UF" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Digite a cidade" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cep" class="form-label">CEP</label>
+                            <input type="text" name="cep" class="form-control" id="cep" placeholder="Digite o CEP" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="rua" class="form-label">Rua</label>
+                            <input type="text" name="rua" class="form-control" id="rua" placeholder="Digite a rua" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="logradouro" class="form-label">Logradouro</label>
+                            <input type="text" name="logradouro" class="form-control" id="logradouro" placeholder="Digite o logradouro" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
