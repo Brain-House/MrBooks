@@ -1,44 +1,49 @@
 <?php
 
     require_once "../Models/Conexao.php";
-    require_once "../Models/Livro.class.php";
-    require_once "../Models/LivroDAO.php";
-    require_once "../Models/Editora.class.php";
-    require_once "../Models/EditoraDAO.php";
+    require_once "../Models/Pessoa.class.php";
+    require_once "../Models/PessoaDAO.php";
+    require_once "../Models/Usuario.class.php";
+    require_once "../Models/UsuarioDAO.php";
+    require_once "../Models/Telefone.class.php";
+    require_once "../Models/TelefoneDAO.php";
+    require_once "../Models/Endereco.class.php";
+    require_once "../Models/EnderecoDAO.php";
 
-    $msgerro = array("", "", "", "", "", "", "", "");
+
+    $msgerro = array("","","","","","","","");
     $erro = false;
 
     if ($_POST) {
-        if (empty($_POST["titulo"])) {
+        if (empty($_POST[""])) {
             $msgerro[0] = "O título está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["ISBN"])) {
+        if (empty($_POST[""])) {
             $msgerro[1] = "O ISBN está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["editora"])) {
+        if (empty($_POST[""])) {
             $msgerro[2] = "O editora está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["idioma"])) {
+        if (empty($_POST[""])) {
             $msgerro[3] = "O idioma está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["formato"])) {
+        if (empty($_POST[""])) {
             $msgerro[4] = "O formato está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["genero"])) {
+        if (empty($_POST[""])) {
             $msgerro[5] = "O gênero está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["resumo"])) {
+        if (empty($_POST[""])) {
             $msgerro[6] = "O resumo está vazio, preencha por favor!";
             $erro = true;
         }
-        if (empty($_POST["npaginas"])) {
+        if (empty($_POST[""])) {
             $msgerro[7] = "O número de páginas está vazio, preencha por favor!";
             $erro = true;
         }
@@ -46,23 +51,45 @@
         $editora = $_POST["editora"];
 
         if (!$erro) {
-            $livro = new Livro(
+
+            $usuario = new Usuario(
                 0,
-                $_POST["npaginas"],
                 "Ativo",
-                $_POST["titulo"],
-                $_POST["ISBN"],
-                $_POST["idioma"],
-                $_POST["formato"],
-                $_POST["genero"],
-                $_POST["resumo"],
-                $editora
+                "",
+                $_POST["datanasc"],
+                $_POST["email"],
+                $_POST["senha"],
+                $_POST["tipo"],
+                $_POST["cpf"]
             );
 
-            $LivroDAO = new LivroDAO();
-            $LivroDAO->inserir($livro);
+            $UsuarioDAO = new UsuarioDAO();
+            $UsuarioDAO->inserir($usuario);
 
-            header("location:listar_livros.php");
+            $telefone = new Telefone(
+                0,
+                $_POST['telefone'],
+                $_POST['ddd']
+            );
+
+            $TelefoneDAO = new TelfoneDAO();
+            $TelefoneDAO->inserir($telefone);
+
+            $endereco = new Endereco(
+                0,
+                $_POST['numerocasa'],
+                $_POST['bairro'],
+                $_POST['uf'],
+                $_POST['cidade'],
+                $_POST['cep'],
+                $_POST['rua'],
+                $_POST['logradouro']
+            );
+
+            $EnderecoDAO = new EnderecoDAO();
+            $EnderecoDAO->inserir($endereco);
+
+            header("location:listar_usuarios.php");
         }
     }
 ?>
