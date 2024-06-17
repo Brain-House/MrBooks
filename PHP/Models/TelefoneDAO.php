@@ -11,7 +11,7 @@
             $stm->bindValue(1, $telefone->getTel_id());
             $stm->bindValue(2, $telefone->getTel_num());
             $stm->bindValue(3, $telefone->getTel_ddd());
-            $stm->bindValue(4, $telefone->getUsu_id());
+            $stm->bindValue(4, $telefone->getTel_usu_id());
             $stm->execute();
             $this->db = null;
         }

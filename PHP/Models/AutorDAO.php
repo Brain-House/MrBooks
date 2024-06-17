@@ -35,5 +35,16 @@
             
             $this -> db = null;
         }
+
+        public function buscar_autores_ativos($autor)
+        {
+            $sql = "SELECT * FROM autores WHERE aut_status = ?";
+                
+            $stm = $this->db->prepare($sql);
+            $stm -> bindValue(1, $autor -> getAut_status());
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+            $this->db = null;
+        }
     }
 ?>

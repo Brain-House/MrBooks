@@ -4,7 +4,8 @@
         public function __construct(
             private int $tel_id = 0,
             private string $tel_num = "",
-            private string $tel_ddd = ""
+            private string $tel_ddd = "",
+            private int $tel_usu_id = 0
         ){}
 
         //Getter's
@@ -46,6 +47,26 @@
 
             return $this;
         }
+
+            /**
+             * Get the value of tel_usu_id
+             */ 
+            public function getTel_usu_id()
+            {
+                        return $this->tel_usu_id;
+            }
+
+            /**
+             * Set the value of tel_usu_id
+             *
+             * @return  self
+             */ 
+            public function setTel_usu_id($tel_usu_id)
+            {
+                        $this->tel_usu_id = $tel_usu_id;
+
+                        return $this;
+            }
     }
 
 ?>

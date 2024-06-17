@@ -8,8 +8,9 @@
             private string $end_uf = "",
             private string $end_cidade = "",
             private string $end_cep = "",
-            private string $end_rua = "",
-            private string $end_logradouro = ""
+            private string $end_logradouro = "",
+            private string $end_complemento = "",
+            private int $end_usu_id = 0
         ){}
 
         //Getter's
@@ -111,6 +112,46 @@
 
             return $this;
         }
+
+            /**
+             * Get the value of end_complemento
+             */ 
+            public function getEnd_complemento()
+            {
+                        return $this->end_complemento;
+            }
+
+            /**
+             * Set the value of end_complemento
+             *
+             * @return  self
+             */ 
+            public function setEnd_complemento($end_complemento)
+            {
+                        $this->end_complemento = $end_complemento;
+
+                        return $this;
+            }
+
+            /**
+             * Get the value of end_usu_id
+             */ 
+            public function getEnd_usu_id()
+            {
+                        return $this->end_usu_id;
+            }
+
+            /**
+             * Set the value of end_usu_id
+             *
+             * @return  self
+             */ 
+            public function setEnd_usu_id($end_usu_id)
+            {
+                        $this->end_usu_id = $end_usu_id;
+
+                        return $this;
+            }
     }
 
 ?>

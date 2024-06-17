@@ -14,9 +14,9 @@
             $stm->bindValue(4, $endereco->getEnd_uf());
             $stm->bindValue(5, $endereco->getEnd_cidade());
             $stm->bindValue(6, $endereco->getEnd_cep());
-            $stm->bindValue(7, $endereco->getEnd_complemento());
-            $stm->bindValue(8, $endereco->getEnd_logradouro());
-            $stm->bindValue(9, $endereco->getUsu_id());
+            $stm->bindValue(8, $endereco->getEnd_complemento());
+            $stm->bindValue(7, $endereco->getEnd_logradouro());
+            $stm->bindValue(9, $endereco->getEnd_usu_id());
             $stm->execute();
             $this->db = null;
         }

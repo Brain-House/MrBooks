@@ -1,5 +1,7 @@
 <?php
 
+require_once "Conexao.php";
+
     class UsuarioDAO extends Conexao{
         public function __construct(){
             parent:: __construct();
@@ -17,6 +19,10 @@
             $stm->bindValue(7, $usuario->getUsu_email());
             $stm->bindValue(8, $usuario->getUsu_senha());
             $stm->execute();
+            
+            $idusuario = $this->db->lastInsertId();
+            return $idusuario;
+
             $this->db = null;
         }
 

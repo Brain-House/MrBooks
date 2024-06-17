@@ -3,6 +3,9 @@
     require_once "../Models/Conexao.php";
     require_once "../Models/Livro.class.php";
     require_once "../Models/LivroDAO.php";
+    require_once "../Models/Pessoa.class.php";
+    require_once "../Models/Autor.class.php";
+    require_once "../Models/AutorDAO.php";
     require_once "../Models/Editora.class.php";
     require_once "../Models/EditoraDAO.php";
 
@@ -81,32 +84,9 @@
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">MrBooks</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Início</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Painel de ADM
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="form_editora.php">Cadastro Editoras</a></li>
-                            <li><a class="dropdown-item" href="form_autor.php">Cadastro Autores</a></li>
-                            <li><a class="dropdown-item" href="form_livro.php">Cadastro Livro</a></li>
-                            <li><a class="dropdown-item" href="listar_editoras.php">Listar Editoras</a></li>
-                            <li><a class="dropdown-item" href="listar_autores.php">Listar Autores</a></li>
-                            <li><a class="dropdown-item" href="listar_livros.php">Listar Livros</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <?php
+            require_once "navbar.php";
+        ?>
     </nav>
 
     <div class="container-fluid">
@@ -134,16 +114,32 @@
                                 <select id="editora" name="editora" class="form-select">
                                     <option value="0">Escolha uma editora</option>
                                     <?php
-                                    $editora = new Editora(edi_status:"Ativo");
-                                    $editoraDAO = new EditoraDAO();
-                                    $ret = $editoraDAO->buscar_editoras_ativas($editora);
-                                    foreach ($ret as $dado) {
-                                        $selected = isset($_POST["editora"]) && $_POST["editora"] == $dado->edi_id ? 'selected' : '';
-                                        echo "<option value='{$dado->edi_id}' $selected>{$dado->edi_nome}</option>";
-                                    }
+                                        $editora = new Editora(edi_status:"Ativo");
+                                        $editoraDAO = new EditoraDAO();
+                                        $ret = $editoraDAO->buscar_editoras_ativas($editora);
+                                        foreach ($ret as $dado) {
+                                            $selected = isset($_POST["editora"]) && $_POST["editora"] == $dado->edi_id ? 'selected' : '';
+                                            echo "<option value='{$dado->edi_id}' $selected>{$dado->edi_nome}</option>";
+                                        }
                                     ?>
                                 </select>
                                 <div><?php echo $msgerro[2]; ?></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="autor" class="form-label">Autor</label>
+                                <select id="autor" name="autor" class="form-select">
+                                    <option value="0">Escolha uma autor</option>
+                                    <?php
+                                        $autor = new Autor(aut_status:"Ativo");
+                                        $autorDAO = new AutorDAO();
+                                        $buscaautores = $autorDAO->buscar_autores_ativos($autor);
+                                        foreach ($buscaautores as $autores) {
+                                            $selected = isset($_POST["autor"]) && $_POST["autor"] == $autores->aut_id ? 'selected' : '';
+                                            echo "<option value='{$autores->aut_id}' $selected>{$autores->aut_nome}</option>";
+                                        }
+                                    ?>
+                                </select>
                             </div>
 
                             <div class="mb-3">
@@ -166,7 +162,7 @@
 
                             <div class="mb-3">
                                 <label for="resumo" class="form-label">Resumo</label>
-                                <input type="text" name="resumo" class="form-control" id="resumo" placeholder="Digite o resumo do livro" value="<?php echo isset($_POST['resumo']) ? $_POST['resumo'] : '' ?>">
+                                <textarea name="resumo" class="form-control" id="resumo" placeholder="Digite o resumo do livro" rows="4" maxlength="500"><?php echo isset($_POST['resumo']) ? $_POST['resumo'] : ''; ?></textarea>
                                 <div><?php echo $msgerro[6]; ?></div>
                             </div>
 
