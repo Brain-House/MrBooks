@@ -58,5 +58,28 @@ require_once "Conexao.php";
             
             $this -> db = null;
         }
+
+        public function buscar_por_id($usu_id)
+        {
+            $sql = "SELECT * FROM usuarios WHERE usu_id = ?";
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usu_id);
+            $stm->execute();
+            return $stm->fetch(PDO::FETCH_OBJ);
+            $this->db = null;
+        }
+
+        public function atualizar($usuario) {
+            $sql = "UPDATE usuarios SET usu_nome = ?, usu_tipo = ?, usu_cpf = ?, usu_email = ?, usu_status = ? WHERE usu_id = ?";
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usuario->getNome()); // Ajuste de acordo com os métodos getters da classe Usuario
+            $stm->bindValue(2, $usuario->getUsu_tipo());
+            $stm->bindValue(3, $usuario->getUsu_cpf());
+            $stm->bindValue(4, $usuario->getUsu_email());
+            $stm->bindValue(5, $usuario->getUsu_status());
+            $stm->bindValue(6, $usuario->getUsu_id());
+            $stm->execute();
+            $this->db = null;
+        }
     }
 ?>

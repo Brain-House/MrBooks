@@ -111,5 +111,17 @@
 
             return $this;
         }
+
+            /**
+             * Set the value of usu_id
+             *
+             * @return  self
+             */ 
+            public function setUsu_id($usu_id)
+            {
+                        $this->usu_id = $usu_id;
+
+                        return $this;
+            }
     }
 ?>

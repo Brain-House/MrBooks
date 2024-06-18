@@ -11,7 +11,8 @@ class Livro{
         private string $liv_formato = "",
         private string $liv_genero = "",
         private string $liv_resumo = "",
-        private int $liv_edi_id = 0
+        private int $liv_edi_id = 0,
+        private int $liv_aut_id = 0
         ){}
 
         //Getter's
@@ -64,6 +65,11 @@ class Livro{
         public function getLiv_edi_id()
         {
                 return $this->liv_edi_id;
+        }
+
+        public function getLiv_aut_id()
+        {
+                return $this->liv_aut_id;
         }
 
         //Setter's
@@ -137,6 +143,13 @@ class Livro{
 
                 return $this;
         }
+
+        public function setLiv_aut_id($liv_aut_id)
+        {
+                $this->liv_aut_id = $liv_aut_id;
+
+                return $this;
+        }  
 }
 
 ?>

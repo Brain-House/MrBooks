@@ -24,6 +24,14 @@
             $this->db = null;
             return $stm->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function buscar_por_usuario($usu_id) {
+            $sql = "SELECT * FROM telefones WHERE tel_usu_id = ?";
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usu_id);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        }
         
     }
 ?>

@@ -25,6 +25,11 @@
             return $this->tel_ddd;
         }
 
+        public function getTel_usu_id()
+        {
+            return $this->tel_usu_id;
+        }
+
         //Setter's
 
         public function setTel_id($tel_id)
@@ -48,25 +53,12 @@
             return $this;
         }
 
-            /**
-             * Get the value of tel_usu_id
-             */ 
-            public function getTel_usu_id()
-            {
-                        return $this->tel_usu_id;
-            }
+        public function setTel_usu_id($tel_usu_id)
+        {
+            $this->tel_usu_id = $tel_usu_id;
 
-            /**
-             * Set the value of tel_usu_id
-             *
-             * @return  self
-             */ 
-            public function setTel_usu_id($tel_usu_id)
-            {
-                        $this->tel_usu_id = $tel_usu_id;
-
-                        return $this;
-            }
+            return $this;
+        }
     }
 
 ?>

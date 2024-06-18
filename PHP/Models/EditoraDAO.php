@@ -47,5 +47,26 @@
             
             $this -> db = null;
         }
+
+        public function buscar_por_id($edi_id)
+        {
+            $sql = "SELECT * FROM editoras WHERE edi_id = ?";
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $edi_id);
+            $stm->execute();
+            return $stm->fetch(PDO::FETCH_OBJ);
+        }
+
+        public function atualizar($editora)
+        {
+            $sql = "UPDATE editoras SET edi_nome = ?, edi_status = ? WHERE edi_id = ?";
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $editora->getEdi_nome());
+            $stm->bindValue(2, $editora->getEdi_status());
+            $stm->bindValue(3, $editora->getEdi_id());
+            $stm->execute();
+            $this->db = null;
+        }
+
     }
 ?>

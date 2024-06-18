@@ -10,58 +10,52 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <?php
-            require_once "navbar.php";
-        ?>
+        <?php require_once "navbar.php"; ?>
     </nav>
-<?php
 
-require_once "../Models/Conexao.php";
-require_once "../Models/EditoraDAO.php";
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Tabela Editoras</h1>
 
-        
-$editoraDAO = new EditoraDAO();
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                require_once "../Models/Conexao.php";
+                require_once "../Models/EditoraDAO.php";
 
-$editora = $editoraDAO->buscar_todos();
+                $editoraDAO = new EditoraDAO();
+                $editoras = $editoraDAO->buscar_todos();
 
-echo "<h1 style='text-align: center;'>Tabela Editoras</h1>";
+                foreach ($editoras as $editora) {
+                    echo "<tr>
+                        <td>{$editora->edi_id}</td>
+                        <td>{$editora->edi_nome}</td>
+                        <td>{$editora->edi_status}</td>
+                        <td>
+                            <a href='editar_editora.php?edi_id={$editora->edi_id}' class='btn btn-danger btn-sm'>Editar</a>";
+                    
+                    if ($editora->edi_status == "Ativo") {
+                        echo "<a href='alterar_status_Editora.php?edi_id={$editora->edi_id}&edi_status=Inativo' class='btn btn-warning btn-sm'>Inativar</a>";
+                    } else {
+                        echo "<a href='alterar_status_Editora.php?edi_id={$editora->edi_id}&edi_status=Ativo' class='btn btn-warning btn-sm'>Ativar</a>";
+                    }
+                    
+                    echo "</td>
+                        </tr>";
+                }
+                ?>
+            </tbody>
+        </table>
 
-echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #dddddd;'>
-    <thead>
-        <tr style='background-color: #f2f2f2;'>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>ID</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Nome</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Status</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Ações</th>
-        </tr>
-    </thead>
-    <tbody>";
-
-    foreach ($editora as $editora) {
-        echo "<tr>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$editora->edi_id}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$editora->edi_nome}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$editora->edi_status}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>";
-        if($editora->edi_status == "Ativo") {
-            echo "<a href='alterar_status_Editora.php?edi_id={$editora -> edi_id}&edi_status=Inativo' class='btn btn-warning'>Inativar</a>";
-        } else {
-            echo "<a href='alterar_status_Editora.php?edi_id={$editora -> edi_id}&edi_status=Ativo' class='btn btn-warning'>Ativar</a>";
-        }
-        echo "
-        </td>
-      </tr>";
-    }
-    
-    echo "</tbody>
-    </table>";
-
-    echo "<br><br><br>";
-
-    echo "<a href = 'form_editora.php'>Cadastrar editora Novamente</a>";
-    
-
-?>
+        <a href='form_editora.php' class='btn btn-primary mt-3'>Cadastrar editora novamente</a>
+    </div>
 
 </body>
 </html>

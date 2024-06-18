@@ -12,7 +12,7 @@ echo "
                     <a class='nav-link active' aria-current='page' href='index.php'>Início</a>
                     </li>
                     <li class='nav-item dropdown'>
-                    <a class='nav-link dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                    <a class='nav-link dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                         Painel de ADM
                     </a>
                     <ul class='dropdown-menu'>

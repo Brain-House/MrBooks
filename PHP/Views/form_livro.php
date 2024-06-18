@@ -1,73 +1,91 @@
 <?php
+require_once "../Models/Conexao.php";
+require_once "../Models/Pessoa.class.php";
+require_once "../Models/Livro.class.php";
+require_once "../Models/LivroDAO.php";
+require_once "../Models/LivroAutor.class.php";
+require_once "../Models/LivroAutorDAO.php";
+require_once "../Models/Autor.class.php";
+require_once "../Models/AutorDAO.php";
+require_once "../Models/Editora.class.php";
+require_once "../Models/EditoraDAO.php";
 
-    require_once "../Models/Conexao.php";
-    require_once "../Models/Livro.class.php";
-    require_once "../Models/LivroDAO.php";
-    require_once "../Models/Pessoa.class.php";
-    require_once "../Models/Autor.class.php";
-    require_once "../Models/AutorDAO.php";
-    require_once "../Models/Editora.class.php";
-    require_once "../Models/EditoraDAO.php";
+$msgerro = array("", "", "", "", "", "", "", "", "");
+$erro = false;
 
-    $msgerro = array("", "", "", "", "", "", "", "");
-    $erro = false;
-
-    if ($_POST) {
-        if (empty($_POST["titulo"])) {
-            $msgerro[0] = "O título está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["ISBN"])) {
-            $msgerro[1] = "O ISBN está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["editora"])) {
-            $msgerro[2] = "O editora está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["idioma"])) {
-            $msgerro[3] = "O idioma está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["formato"])) {
-            $msgerro[4] = "O formato está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["genero"])) {
-            $msgerro[5] = "O gênero está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["resumo"])) {
-            $msgerro[6] = "O resumo está vazio, preencha por favor!";
-            $erro = true;
-        }
-        if (empty($_POST["npaginas"])) {
-            $msgerro[7] = "O número de páginas está vazio, preencha por favor!";
-            $erro = true;
-        }
-
-        $editora = $_POST["editora"];
-
-        if (!$erro) {
-            $livro = new Livro(
-                0,
-                $_POST["npaginas"],
-                "Ativo",
-                $_POST["titulo"],
-                $_POST["ISBN"],
-                $_POST["idioma"],
-                $_POST["formato"],
-                $_POST["genero"],
-                $_POST["resumo"],
-                $editora
-            );
-
-            $LivroDAO = new LivroDAO();
-            $LivroDAO->inserir($livro);
-
-            header("location:listar_livros.php");
-        }
+if ($_POST) {
+    if (empty($_POST["titulo"])) {
+        $msgerro[0] = "O título está vazio, preencha por favor!";
+        $erro = true;
     }
+    if (empty($_POST["ISBN"])) {
+        $msgerro[1] = "O ISBN está vazio, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["editora"])) {
+        $msgerro[2] = "A editora não foi selecionada, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["autor"])) {
+        $msgerro[3] = "O autor não foi selecionado, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["idioma"])) {
+        $msgerro[4] = "O idioma está vazio, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["formato"])) {
+        $msgerro[5] = "O formato está vazio, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["genero"])) {
+        $msgerro[6] = "O gênero está vazio, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["resumo"])) {
+        $msgerro[7] = "O resumo está vazio, preencha por favor!";
+        $erro = true;
+    }
+    if (empty($_POST["npaginas"])) {
+        $msgerro[8] = "O número de páginas está vazio, preencha por favor!";
+        $erro = true;
+    }
+
+    $editora_id = $_POST["editora"];
+    $autor_id = $_POST["autor"];
+
+    if (!$erro) {
+        $livro = new Livro(
+            0,
+            $_POST["npaginas"],
+            "Ativo",
+            $_POST["titulo"],
+            $_POST["ISBN"],
+            $_POST["idioma"],
+            $_POST["formato"],
+            $_POST["genero"],
+            $_POST["resumo"],
+            $editora_id,
+            $_POST["autor"]
+        );
+
+        $LivroDAO = new LivroDAO();
+
+        $idlivro = $LivroDAO->inserir($livro);
+
+        $livro_autor = new LivroAutor(
+            $idlivro,
+            $_POST['autor']
+        );
+
+        $livro_autorDAO = new LivroAutorDAO();
+        $livro_autorDAO->inserir($livro_autor);
+
+        header("location:listar_livros.php");
+
+        exit();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +94,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Editora</title>
+    <title>Cadastro de Livro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
@@ -84,9 +102,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <?php
-            require_once "navbar.php";
-        ?>
+        <?php require_once "navbar.php"; ?>
     </nav>
 
     <div class="container-fluid">
@@ -129,47 +145,49 @@
                             <div class="mb-3">
                                 <label for="autor" class="form-label">Autor</label>
                                 <select id="autor" name="autor" class="form-select">
-                                    <option value="0">Escolha uma autor</option>
+                                    <option value="0">Escolha um autor</option>
                                     <?php
-                                        $autor = new Autor(aut_status:"Ativo");
-                                        $autorDAO = new AutorDAO();
-                                        $buscaautores = $autorDAO->buscar_autores_ativos($autor);
-                                        foreach ($buscaautores as $autores) {
-                                            $selected = isset($_POST["autor"]) && $_POST["autor"] == $autores->aut_id ? 'selected' : '';
-                                            echo "<option value='{$autores->aut_id}' $selected>{$autores->aut_nome}</option>";
-                                        }
+                                    $autorDAO = new AutorDAO();
+                                    $autores = $autorDAO->buscar_autores_ativos();
+
+                                    foreach ($autores as $autor) {
+                                        $selected = isset($_POST["autor"]) && $_POST["autor"] == $autor->aut_id ? 'selected' : '';
+                                        echo "<option value='{$autor->aut_id}' $selected>{$autor->aut_nome}</option>";
+                                    }
                                     ?>
                                 </select>
+                                <div><?php echo $msgerro[3]; ?></div>
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="idioma" class="form-label">Idioma</label>
                                 <input type="text" name="idioma" class="form-control" id="idioma" placeholder="Digite o idioma do livro" value="<?php echo isset($_POST['idioma']) ? $_POST['idioma'] : '' ?>">
-                                <div><?php echo $msgerro[3]; ?></div>
+                                <div><?php echo $msgerro[4]; ?></div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="formato" class="form-label">Formato</label>
                                 <input type="text" name="formato" class="form-control" id="formato" placeholder="Digite o formato do livro" value="<?php echo isset($_POST['formato']) ? $_POST['formato'] : '' ?>">
-                                <div><?php echo $msgerro[4]; ?></div>
+                                <div><?php echo $msgerro[5]; ?></div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="genero" class="form-label">Gênero</label>
                                 <input type="text" name="genero" class="form-control" id="genero" placeholder="Digite o gênero do livro" value="<?php echo isset($_POST['genero']) ? $_POST['genero'] : '' ?>">
-                                <div><?php echo $msgerro[5]; ?></div>
+                                <div><?php echo $msgerro[6]; ?></div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="resumo" class="form-label">Resumo</label>
                                 <textarea name="resumo" class="form-control" id="resumo" placeholder="Digite o resumo do livro" rows="4" maxlength="500"><?php echo isset($_POST['resumo']) ? $_POST['resumo'] : ''; ?></textarea>
-                                <div><?php echo $msgerro[6]; ?></div>
+                                <div><?php echo $msgerro[7]; ?></div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="npaginas" class="form-label">Número de Páginas</label>
                                 <input type="number" name="npaginas" class="form-control" id="npaginas" placeholder="Digite o número de páginas do livro" value="<?php echo isset($_POST['npaginas']) ? $_POST['npaginas'] : '' ?>">
-                                <div><?php echo $msgerro[7]; ?></div>
+                                <div><?php echo $msgerro[8]; ?></div>
                             </div>
 
                             <div class="text-center">
@@ -182,4 +200,5 @@
         </div>
     </div>
 </body>
+
 </html>

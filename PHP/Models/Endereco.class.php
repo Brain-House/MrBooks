@@ -55,6 +55,16 @@
             return $this->end_logradouro;
         }
 
+        public function getEnd_complemento()
+        {
+            return $this->end_complemento;
+        }
+
+        public function getEnd_usu_id()
+        {
+            return $this->end_usu_id;
+        }
+
         //Setter's
 
         public function setEnd_id($end_id)
@@ -113,45 +123,19 @@
             return $this;
         }
 
-            /**
-             * Get the value of end_complemento
-             */ 
-            public function getEnd_complemento()
-            {
-                        return $this->end_complemento;
-            }
+        public function setEnd_complemento($end_complemento)
+        {
+            $this->end_complemento = $end_complemento;
 
-            /**
-             * Set the value of end_complemento
-             *
-             * @return  self
-             */ 
-            public function setEnd_complemento($end_complemento)
-            {
-                        $this->end_complemento = $end_complemento;
+            return $this;
+        }
 
-                        return $this;
-            }
+        public function setEnd_usu_id($end_usu_id)
+        {
+            $this->end_usu_id = $end_usu_id;
 
-            /**
-             * Get the value of end_usu_id
-             */ 
-            public function getEnd_usu_id()
-            {
-                        return $this->end_usu_id;
-            }
-
-            /**
-             * Set the value of end_usu_id
-             *
-             * @return  self
-             */ 
-            public function setEnd_usu_id($end_usu_id)
-            {
-                        $this->end_usu_id = $end_usu_id;
-
-                        return $this;
-            }
+            return $this;
+        }
     }
 
 ?>
