@@ -2,6 +2,7 @@
 // atualizar_livro.php
 
 require_once "../Models/Conexao.php";
+require_once "../Models/Livro.class.php";
 require_once "../Models/LivroDAO.php";
 require_once "../Models/EditoraDAO.php";
 
@@ -27,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $livro->setLiv_formato($liv_formato);
     $livro->setLiv_genero($liv_genero);
     $livro->setLiv_resumo($liv_resumo);
-    $livro->setLiv_numpagi($liv_numpagi);
+    $livro->setLiv_numpag($liv_numpagi);
     $livro->setLiv_edi_id($liv_edi_id);
     $livro->setLiv_status($liv_status);
 

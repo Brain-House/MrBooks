@@ -19,6 +19,7 @@
             <?php
             require_once "../Models/Conexao.php";
             require_once "../Models/LivroDAO.php";
+            require_once "../Models/Editora.class.php";
             require_once "../Models/EditoraDAO.php";
 
             if (isset($_GET['liv_id'])) {
