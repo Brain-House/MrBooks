@@ -1,106 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Editoras</title>
-    <style>
-        .btn-ativar {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .btn-inativar {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-        }
-        
-        .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-        
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="navbar">
-        <a href="index.php">Home</a>
-        <a href="form_editora.php">Cadastro Editoras</a>
-        <a href="form_autor.php">Cadastro Autores</a>
-        <a href="listar_autores.php">Listar Autores</a>
-        <a href="listar_editoras.php">Listar Editoras</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <?php require_once "navbar.php"; ?>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Tabela Editoras</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                require_once "../Models/Conexao.php";
+                require_once "../Models/EditoraDAO.php";
+
+                $editoraDAO = new EditoraDAO();
+                $editoras = $editoraDAO->buscar_todos();
+
+                foreach ($editoras as $editora) {
+                    echo "<tr>
+                        <td>{$editora->edi_id}</td>
+                        <td>{$editora->edi_nome}</td>
+                        <td>{$editora->edi_status}</td>
+                        <td>
+                            <a href='editar_editora.php?edi_id={$editora->edi_id}' class='btn btn-danger btn-sm'>Editar</a>";
+                    
+                    if ($editora->edi_status == "Ativo") {
+                        echo "<a href='alterar_status_Editora.php?edi_id={$editora->edi_id}&edi_status=Inativo' class='btn btn-warning btn-sm'>Inativar</a>";
+                    } else {
+                        echo "<a href='alterar_status_Editora.php?edi_id={$editora->edi_id}&edi_status=Ativo' class='btn btn-warning btn-sm'>Ativar</a>";
+                    }
+                    
+                    echo "</td>
+                        </tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <a href='form_editora.php' class='btn btn-primary mt-3'>Cadastrar editora novamente</a>
     </div>
-<?php
-
-require_once "../Models/Conexao.php";
-require_once "../Models/EditoraDAO.php";
-
-        
-$editoraDAO = new EditoraDAO();
-
-$editora = $editoraDAO->buscar_todos();
-
-echo "<h1 style='text-align: center;'>Tabela Editoras</h1>";
-
-echo "<table style='border-collapse: collapse; width: 100%; border: 1px solid #dddddd;'>
-    <thead>
-        <tr style='background-color: #f2f2f2;'>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>ID</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Nome</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Status</th>
-            <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Ações</th> <!-- Coluna para os botões -->
-        </tr>
-    </thead>
-    <tbody>";
-
-    foreach ($editora as $dado) {
-        $classe_botao = ($dado->status == "Ativo") ? "btn-inativar" : "btn-ativar";
-        echo "<tr>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_id}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->edi_nome}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>{$dado->status}</td>
-        <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>
-            <form action='ativar_inativar_autor.php' method='post'>
-                <input type='hidden' name='autor_id' value='{$dado->edi_id}'>";
-        if($dado->status == "Ativo") {
-            echo "<a href='#?id={$dado->edi_id}&status=Inativo' class='btn btn-warning'>Inativar</a>";
-        } else {
-            echo "<a href='#?id={$dado->edi_id}&status=Ativo' class='btn btn-warning'>Ativar</a>";
-        }
-        echo "</form>
-        </td>
-      </tr>";
-    }
-    
-    echo "</tbody>
-    </table>";
-
-    echo "<br><br><br>";
-
-    echo "<a href = 'form_editora.php'>Cadastrar editora Novamente</a>";
-    
-
-?>
 
 </body>
 </html>
